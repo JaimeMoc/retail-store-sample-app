@@ -48,41 +48,41 @@ La aplicación ha sido deliberadamente sobre-diseñada para generar múltiples c
 | [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders-chart)   | API de pedidos de usuarios                        |
 | [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout-chart) |API para orquestar el proceso de pago |
 
-## Quickstart
+### Inicio Rápido
 
-The following sections provide quickstart instructions for various platforms.
+Las siguientes secciones ofrecen instrucciones de inicio rápido para diferentes plataformas.
 
 ### Docker
 
-This deployment method will run the application as a single container on your local machine using `docker`.
+Este método de despliegue ejecutará la aplicación como un único contenedor en tu máquina local utilizando docker.
 
-Pre-requisites:
+Requisitos previos:
 
-- Docker installed locally
+- Tener Docker instalado localmente
 
-Run the container:
+Ejecuta el contenedor:
 
 ```
 docker run -it --rm -p 8888:8080 public.ecr.aws/aws-containers/retail-store-sample-ui:1.0.0
 ```
 
-Open the frontend in a browser window:
+Abre la interfaz de usuario en una ventana del navegador:
 
 ```
 http://localhost:8888
 ```
 
-To stop the container in `docker` use Ctrl+C.
+Para detener el contenedor en `docker` usa Ctrl+C.
 
 ### Docker Compose
 
-This deployment method will run the application on your local machine using `docker-compose`.
+Este método de despliegue ejecutará la aplicación en tu máquina local utilizando `docker-compose`.
 
-Pre-requisites:
+Requisitos previos:
 
-- Docker installed locally
-
-Download the latest Docker Compose file and use `docker compose` to run the application containers:
+- Docker instalado localmente
+  
+Descarga el archivo más reciente de Docker Compose y utilízalo `docker compose` para ejecutar los contenedores de la aplicación:
 
 ```
 wget https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/docker-compose.yaml
@@ -90,13 +90,13 @@ wget https://github.com/aws-containers/retail-store-sample-app/releases/latest/d
 DB_PASSWORD='<some password>' docker compose --file docker-compose.yaml up
 ```
 
-Open the frontend in a browser window:
+Abre la interfaz de usuario en una ventana del navegador:
 
 ```
 http://localhost:8888
 ```
 
-To stop the containers in `docker compose` use Ctrl+C. To delete all the containers and related resources run:
+Para detener los contenedores en `docker compose` usa Ctrl+C. Para eliminar todos los contenedores y los recursos relacionados, ejecuta:
 
 ```
 docker compose -f docker-compose.yaml down
@@ -104,27 +104,27 @@ docker compose -f docker-compose.yaml down
 
 ### Kubernetes
 
-This deployment method will run the application in an existing Kubernetes cluster.
+Este método de despliegue ejecutará la aplicación en un clúster de Kubernetes existente.
 
-Pre-requisites:
+Requisitos previos:
 
-- Kubernetes cluster
-- `kubectl` installed locally
+- cluster de Kubernetes.
+- `kubectl` instalado localmente.
 
-Use `kubectl` to run the application:
+Usa `kubectl` para ejecutar la aplicación:
 
 ```
 kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
 kubectl wait --for=condition=available deployments --all
 ```
 
-Get the URL for the frontend load balancer like so:
+Obtén la URL del balanceador de carga del frontend de la siguiente manera:
 
 ```
 kubectl get svc ui
 ```
 
-To remove the application use `kubectl` again:
+Para eliminar la aplicación, utiliza `kubectl` nuevamente:
 
 ```
 kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
@@ -132,49 +132,27 @@ kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/rele
 
 ### Terraform
 
-The following options are available to deploy the application using Terraform:
+Las siguientes opciones están disponibles para desplegar la aplicación utilizando Terraform:
 
-| Name                                             | Description                                                                                                     |
+| Nombre                                           | Descripciòn                                                                                                     |
 | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| [Amazon EKS](./terraform/eks/default/)           | Deploys the application to Amazon EKS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [Amazon EKS (Minimal)](./terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
-| [Amazon ECS](./terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [AWS App Runner](./terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
+| [Amazon EKS](./terraform/eks/default/)           | Despliega la aplicación en Amazon EKS utilizando otros servicios de AWS para las dependencias, como RDS, DynamoDB, etc.   |
+| [Amazon EKS (Minimal)](./terraform/eks/minimal/) | Despliega la aplicación en Amazon EKS utilizando dependencias dentro del clúster en lugar de RDS, DynamoDB, etc.           |
+| [Amazon ECS](./terraform/ecs/default/)           | Despliega la aplicación en Amazon ECS utilizando otros servicios de AWS para las dependencias, como RDS, DynamoDB, etc.    |
+| [AWS App Runner](./terraform/apprunner/)         | Despliega la aplicación en AWS App Runner utilizando otros servicios de AWS para las dependencias, como RDS, DynamoDB, etc. |
 
-## Security
+## Seguridad
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+Consulta [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) para màs informaciòn.
 
-## License
+## Licencia
+Este proyecto está licenciado bajo la Licencia MIT-0.
 
-This project is licensed under the MIT-0 License.
+Este paquete depende de, y puede incorporar o recuperar, varios paquetes de software de terceros (como paquetes de código abierto) durante la instalación, compilación o ejecución ("Dependencias Externas"). Las Dependencias Externas están sujetas a términos de licencia que debes aceptar para poder usar este paquete. Si no aceptas todos los términos de licencia aplicables, no debes usar este paquete. Se recomienda consultar la política de aprobación de código abierto de tu empresa antes de continuar. A continuación se proporciona una lista de Dependencias Externas y la identificación de la licencia aplicable según la documentación asociada con dichas dependencias al momento de la revisión más reciente de Amazon.
 
-This package depends on and may incorporate or retrieve a number of third-party
-software packages (such as open source packages) at install-time or build-time
-or run-time ("External Dependencies"). The External Dependencies are subject to
-license terms that you must accept in order to use this package. If you do not
-accept all of the applicable license terms, you should not use this package. We
-recommend that you consult your company’s open source approval policy before
-proceeding.
+ESTA INFORMACIÓN SE PROPORCIONA SOLO POR CONVENIENCIA. AMAZON NO GARANTIZA QUE LA LISTA O LOS TÉRMINOS Y CONDICIONES APLICABLES SEAN COMPLETOS, PRECISOS O ACTUALIZADOS, Y AMAZON NO TENDRÁ NINGUNA RESPONSABILIDAD POR INEXACTITUDES. DEBES CONSULTAR LOS SITIOS DE DESCARGA DE LAS DEPENDENCIAS EXTERNAS PARA OBTENER LA INFORMACIÓN DE LICENCIA MÁS COMPLETA Y ACTUALIZADA.
 
-Provided below is a list of External Dependencies and the applicable license
-identification as indicated by the documentation associated with the External
-Dependencies as of Amazon's most recent review.
-
-THIS INFORMATION IS PROVIDED FOR CONVENIENCE ONLY. AMAZON DOES NOT PROMISE THAT
-THE LIST OR THE APPLICABLE TERMS AND CONDITIONS ARE COMPLETE, ACCURATE, OR
-UP-TO-DATE, AND AMAZON WILL HAVE NO LIABILITY FOR ANY INACCURACIES. YOU SHOULD
-CONSULT THE DOWNLOAD SITES FOR THE EXTERNAL DEPENDENCIES FOR THE MOST COMPLETE
-AND UP-TO-DATE LICENSING INFORMATION.
-
-YOUR USE OF THE EXTERNAL DEPENDENCIES IS AT YOUR SOLE RISK. IN NO EVENT WILL
-AMAZON BE LIABLE FOR ANY DAMAGES, INCLUDING WITHOUT LIMITATION ANY DIRECT,
-INDIRECT, CONSEQUENTIAL, SPECIAL, INCIDENTAL, OR PUNITIVE DAMAGES (INCLUDING
-FOR ANY LOSS OF GOODWILL, BUSINESS INTERRUPTION, LOST PROFITS OR DATA, OR
-COMPUTER FAILURE OR MALFUNCTION) ARISING FROM OR RELATING TO THE EXTERNAL
-DEPENDENCIES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, EVEN
-IF AMAZON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THESE LIMITATIONS
-AND DISCLAIMERS APPLY EXCEPT TO THE EXTENT PROHIBITED BY APPLICABLE LAW.
+EL USO DE LAS DEPENDENCIAS EXTERNAS ES BAJO TU PROPIO RIESGO. EN NINGÚN CASO AMAZON SERÁ RESPONSABLE DE NINGÚN DAÑO, INCLUYENDO, SIN LIMITACIÓN, DAÑOS DIRECTOS, INDIRECTOS, CONSECUENCIALES, ESPECIALES, INCIDENTALES O PUNITIVOS (INCLUIDOS PÉRDIDA DE CLIENTELA, INTERRUPCIÓN DE NEGOCIOS, PÉRDIDAS DE BENEFICIOS O DATOS, O FALLAS O MALFUNCIONAMIENTOS DE COMPUTADORAS) DERIVADOS O RELACIONADOS CON LAS DEPENDENCIAS EXTERNAS, SIN IMPORTAR LA CAUSA Y AUN CUANDO AMAZON HAYA SIDO ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS. ESTAS LIMITACIONES Y DESCARGOS APLICAN SALVO LO PROHIBIDO POR LA LEY APLICABLE.
 
 MariaDB Community License - [LICENSE](https://mariadb.com/kb/en/mariadb-licenses/)
 MySQL Community Edition - [LICENSE](https://github.com/mysql/mysql-server/blob/8.0/LICENSE)
