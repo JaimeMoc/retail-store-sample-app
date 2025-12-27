@@ -11,42 +11,42 @@
   </div>
 
   <strong>
-  <h2>AWS Containers Retail Sample</h2>
+  <h2>AWS Containers Retail</h2>
   </strong>
 </div>
 
-This is a sample application designed to illustrate various concepts related to containers on AWS. It presents a sample retail store application including a product catalog, shopping cart and checkout.
+Esta es una aplicación de ejemplo diseñada para ilustrar varios conceptos relacionados con contenedores en AWS. Presenta una aplicación de tienda minorista de ejemplo, que incluye un catálogo de productos, carrito de compras y proceso de pago.
 
-It provides:
+Proporciona:
 
-- A demo store-front application with themes, pages to show container and application topology information, generative AI chat bot and utility functions for experimentation and demos.
-- An optional distributed component architecture using various languages and frameworks
-- A variety of different persistence backends for the various components like MariaDB (or MySQL), DynamoDB and Redis
-- The ability to run in different container orchestration technologies like Docker Compose, Kubernetes etc.
-- Pre-built container images for both x86-64 and ARM64 CPU architectures
-- All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
-- Support for Istio on Kubernetes
-- Load generator which exercises all of the infrastructure
+- Una aplicación de demostración de tienda en línea con temas, páginas para mostrar información de la topología de contenedores y aplicaciones, un chatbot de IA generativa y funciones utilitarias para experimentación y demostraciones.
+- Una arquitectura de componentes distribuida opcional usando varios lenguajes y frameworks.
+- Una variedad de distintos sistemas de persistencia para los diferentes componentes, como MariaDB (o MySQL), DynamoDB y Redis.
+- La capacidad de ejecutarse en distintas tecnologías de orquestación de contenedores, como Docker Compose, Kubernetes, etc.
+- Imágenes de contenedor preconstruidas para arquitecturas de CPU x86-64 y ARM64.
+- Todos los componentes instrumentados para métricas de Prometheus y trazado OTLP de OpenTelemetry.
+- Soporte para Istio en Kubernetes.
+- Generador de carga que utiliza toda la infraestructura.
 
-See the [features documentation](./docs/features.md) for more information.
+Consulta la [documentacion de funciones](./docs/features.md) para màs informaciòn.
 
-**This project is intended for educational purposes only and not for production use**
+**Este proyecto está destinado únicamente con fines educativos y no para uso en producción.**
 
 ![Screenshot](/docs/images/screenshot.png)
 
-## Application Architecture
+## Arquitectura de la Aplicación
 
-The application has been deliberately over-engineered to generate multiple de-coupled components. These components generally have different infrastructure dependencies, and may support multiple "backends" (example: Carts service supports MongoDB or DynamoDB).
+La aplicación ha sido deliberadamente sobre-diseñada para generar múltiples componentes desacoplados. Estos componentes generalmente tienen diferentes dependencias de infraestructura y pueden admitir múltiples "backends" (por ejemplo: el servicio de Carritos soporta MongoDB o DynamoDB).
 
-![Architecture](/docs/images/architecture.png)
+![Arquitectura](/docs/images/architecture.png)
 
-| Component                  | Language | Container Image                                                             | Helm Chart                                                                        | Description                             |
+| Componente                 | Lenguaje | Imagen de contenedor                                                           | Helm (Paquete)                                                                        | Descripciòn                             |
 | -------------------------- | -------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------- |
-| [UI](./src/ui/)            | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui-chart)       | Store user interface                    |
-| [Catalog](./src/catalog/)  | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog-chart)  | Product catalog API                     |
-| [Cart](./src/cart/)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart-chart)     | User shopping carts API                 |
-| [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders-chart)   | User orders API                         |
-| [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout-chart) | API to orchestrate the checkout process |
+| [UI](./src/ui/)            | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui-chart)       | Interfaz de usuario de la tienda                    |
+| [Catalog](./src/catalog/)  | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog-chart)  | API del catálogo de productos                    |
+| [Cart](./src/cart/)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart-chart)     | API de carritos de compras              |
+| [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders-chart)   | API de pedidos de usuarios                        |
+| [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout-chart) |API para orquestar el proceso de pago |
 
 ## Quickstart
 
